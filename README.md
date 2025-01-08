@@ -1,8 +1,8 @@
-<h1 align="center">Bookworm Mobile App (React Native)</h1>
+<h1 align="center">BookNest (RN-MERN)</h1>
 
 <div align="center">
   <a href="https://github.com/your-username">
-    <img src="https://skillicons.dev/icons?i=react,typescript,nodejs,express,mongodb,tailwind,github" alt="Tech Stack" width="350" style="padding: 15px 0;">
+    <img src="https://skillicons.dev/icons?i=react,typescript,nodejs,express,mongodb,tailwind,github" alt="Tech Stack" width="300" style="padding: 15px 0;">
   </a>
 </div>
 
@@ -14,7 +14,7 @@
 
 ---
 
-## ⭐ Features
+## ⭐ Features (Planned)
 
 - **Authentication**: signup & login with JWT, error handling for bad credentials
 - **Home Feed**: newest-first posts with infinite scrolling
