@@ -13,7 +13,11 @@
 </p>
 
 <div align="center">
-  <img src="https://github.com/burakorkmez/bookworm-expo/blob/master/mobile/assets/images/screenshot-for-readme.png" alt="BookNest screenshot" width="900">
+
+| Signup                                                                                     | Login                                                                                     | Profile                                                                                     | Create                                                                                     | View                                                                                     |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| <img src="./mobile/assets/images/ss.png" alt="Signup Screenshot" width="200" height="400"> | <img src="./mobile/assets/images/ss.png" alt="Login Screenshot" width="200" height="400"> | <img src="./mobile/assets/images/ss.png" alt="Profile Screenshot" width="200" height="400"> | <img src="./mobile/assets/images/ss.png" alt="Create Screenshot" width="200" height="400"> | <img src="./mobile/assets/images/ss.png" alt="View Screenshot" width="200" height="400"> |
+
 </div>
 
 <p align="center">🚧 Currently Building 🚧</p>
