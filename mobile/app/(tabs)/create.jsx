@@ -21,7 +21,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import { API_URL } from '../../constants/api';
 
-const Create = () => {
+export default function Create() {
   const [title, setTitle] = useState('');
   const [caption, setCaption] = useState('');
   const [rating, setRating] = useState(3);
@@ -30,8 +30,9 @@ const Create = () => {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+  const { token } = useAuthStore();
 
-  // Function to pick an image
+  // function to pick an image
   const pickImage = async () => {
     try {
       // request permission if needed
@@ -75,10 +76,58 @@ const Create = () => {
     }
   };
 
-  // Function to handle form submission
-  const handleSubmit = async () => {};
+  // function to handle form submission
+  const handleSubmit = async () => {
+    if (!title || !caption || !imageBase64 || !rating) {
+      Alert.alert('Error', 'Please fill in all fields');
+      return;
+    }
 
-  // Function to render the rating picker
+    try {
+      setLoading(true);
+
+      // get file extension from URI or default to jpeg
+      const uriParts = image.split('.');
+      const fileType = uriParts[uriParts.length - 1];
+      const imageType = fileType ? `image/${fileType.toLowerCase()}` : 'image/jpeg';
+
+      const imageDataUrl = `data:${imageType};base64,${imageBase64}`;
+
+      const response = await fetch(`${API_URL}/book`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          caption,
+          rating: rating.toString(),
+          image: imageDataUrl,
+        }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      if (!response.ok) throw new Error(data.message || 'Something went wrong');
+
+      Alert.alert('Success', 'Your book recommendation has been posted!');
+      setTitle('');
+      setCaption('');
+      setRating(3);
+      setImage(null);
+      setImageBase64(null);
+      router.push('/');
+    } catch (error) {
+      console.error('Error creating post:', error);
+      Alert.alert('Error', error.message || 'Something went wrong');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // function to render the rating picker
   const renderRatingPicker = () => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -183,5 +232,4 @@ const Create = () => {
       </ScrollView>
     </KeyboardAvoidingView>
   );
-};
-export default Create;
+}
