@@ -65,7 +65,11 @@ function Home() {
     fetchBooks();
   }, []);
 
-  const handleLoadMore = async () => {};
+  const handleLoadMore = async () => {
+    if (hasMore && !loading && !refreshing) {
+      await fetchBooks(page + 1);
+    }
+  };
 
   const renderItem = ({ item }) => (
     <View style={styles.bookCard}>
