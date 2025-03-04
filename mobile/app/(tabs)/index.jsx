@@ -84,12 +84,28 @@ function Home() {
 
       <View style={styles.bookDetails}>
         <Text style={styles.bookTitle}>{item.title}</Text>
-        {/* <View style={styles.ratingContainer}>{renderRatingStars(item.rating)}</View> */}
+        <View style={styles.ratingContainer}>{renderRatingStars(item.rating)}</View>
         <Text style={styles.caption}>{item.caption}</Text>
         {/* <Text style={styles.date}>Shared on {formatPublishDate(item.createdAt)}</Text> */}
       </View>
     </View>
   );
+
+  const renderRatingStars = rating => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <Ionicons
+          key={i}
+          name={i <= rating ? 'star' : 'star-outline'}
+          size={16}
+          color={i <= rating ? '#f4b400' : COLORS.textSecondary}
+          style={{ marginRight: 2 }}
+        />
+      );
+    }
+    return stars;
+  };
 
   return (
     <View style={styles.container}>
