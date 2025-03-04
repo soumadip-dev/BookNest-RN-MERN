@@ -21,6 +21,7 @@ function Home() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
+  // Function to fetch books
   const fetchBooks = async (pageNum = 1, refresh = false) => {
     try {
       if (refresh) setRefreshing(true);
@@ -54,16 +55,19 @@ function Home() {
     }
   };
 
+  // Fetch books on component mount
   useEffect(() => {
     fetchBooks();
   }, []);
 
+  // Function to handle load more
   const handleLoadMore = async () => {
     if (hasMore && !loading && !refreshing) {
       await fetchBooks(page + 1);
     }
   };
 
+  // Function to render a book
   const renderItem = ({ item }) => (
     <View style={styles.bookCard}>
       <View style={styles.bookHeader}>
@@ -86,6 +90,7 @@ function Home() {
     </View>
   );
 
+  // Function to render rating stars
   const renderRatingStars = rating => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -102,6 +107,7 @@ function Home() {
     return stars;
   };
 
+  // Render the component
   if (loading) return <Loader />;
 
   return (
