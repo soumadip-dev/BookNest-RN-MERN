@@ -12,7 +12,7 @@ import { useRouter } from 'expo-router';
 import { API_URL } from '../../constants/api';
 import { useAuthStore } from '../../store/authStore';
 import styles from '../../assets/styles/profile.styles';
-// import ProfileHeader from '../../components/ProfileHeader';
+import ProfileHeader from '../../components/ProfileHeader';
 import LogoutButton from '../../components/LogoutButton';
 import { Ionicons } from '@expo/vector-icons';
 import COLORS from '../../constants/colors';
@@ -23,6 +23,7 @@ import Loader from '../../components/Loader';
 const Profile = () => {
   return (
     <View style={styles.container}>
+      <ProfileHeader />
       <LogoutButton />
     </View>
   );
