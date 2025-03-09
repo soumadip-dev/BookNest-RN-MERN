@@ -26,6 +26,10 @@ const Profile = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [deleteBookId, setDeleteBookId] = useState(null);
 
+  const { token } = useAuthStore();
+
+  const router = useRouter();
+
   const renderBookItem = ({ item }) => {};
 
   const handleRefresh = async () => {};
