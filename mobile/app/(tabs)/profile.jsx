@@ -21,6 +21,11 @@ import { sleep } from '.';
 import Loader from '../../components/Loader';
 
 const Profile = () => {
+  const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [deleteBookId, setDeleteBookId] = useState(null);
+
   return (
     <View style={styles.container}>
       <ProfileHeader />
