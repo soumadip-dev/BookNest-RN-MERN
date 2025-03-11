@@ -50,6 +50,10 @@ const Profile = () => {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
   const renderBookItem = ({ item }) => {};
 
   const handleRefresh = async () => {};
