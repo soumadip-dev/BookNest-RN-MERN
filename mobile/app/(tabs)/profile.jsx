@@ -20,7 +20,7 @@ import { Image } from 'expo-image';
 import { sleep } from '.';
 import Loader from '../../components/Loader';
 
-const Profile = () => {
+function Profile() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -41,7 +41,7 @@ const Profile = () => {
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Failed to fetch user books');
 
-      setBooks(data);
+      setBooks(data.books);
     } catch (error) {
       console.error('Error fetching data:', error);
       Alert.alert('Error', 'Failed to load profile data. Pull down to refresh.');
@@ -54,9 +54,56 @@ const Profile = () => {
     fetchData();
   }, []);
 
-  const renderBookItem = ({ item }) => {};
+  const handleDeleteBook = async bookId => {};
 
-  const handleRefresh = async () => {};
+  const confirmDelete = bookId => {};
+
+  const renderBookItem = ({ item }) => (
+    <View style={styles.bookItem}>
+      <Image source={item.image} style={styles.bookImage} />
+      <View style={styles.bookInfo}>
+        <Text style={styles.bookTitle}>{item.title}</Text>
+        <View style={styles.ratingContainer}>{renderRatingStars(item.rating)}</View>
+        <Text style={styles.bookCaption} numberOfLines={2}>
+          {item.caption}
+        </Text>
+        <Text style={styles.bookDate}>{new Date(item.createdAt).toLocaleDateString()}</Text>
+      </View>
+
+      <TouchableOpacity style={styles.deleteButton} onPress={() => confirmDelete(item._id)}>
+        {deleteBookId === item._id ? (
+          <ActivityIndicator size="small" color={COLORS.primary} />
+        ) : (
+          <Ionicons name="trash-outline" size={20} color={COLORS.primary} />
+        )}
+      </TouchableOpacity>
+    </View>
+  );
+
+  const renderRatingStars = rating => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <Ionicons
+          key={i}
+          name={i <= rating ? 'star' : 'star-outline'}
+          size={14}
+          color={i <= rating ? '#f4b400' : COLORS.textSecondary}
+          style={{ marginRight: 2 }}
+        />
+      );
+    }
+    return stars;
+  };
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await sleep(500);
+    await fetchData();
+    setRefreshing(false);
+  };
+
+  if (isLoading && !refreshing) return <Loader />;
 
   return (
     <View style={styles.container}>
@@ -68,6 +115,7 @@ const Profile = () => {
         <Text style={styles.booksTitle}>Your Recommendations 📚</Text>
         <Text style={styles.booksCount}>{books.length} books</Text>
       </View>
+
       <FlatList
         data={books}
         renderItem={renderBookItem}
@@ -94,5 +142,6 @@ const Profile = () => {
       />
     </View>
   );
-};
+}
+
 export default Profile;
