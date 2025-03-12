@@ -34,7 +34,7 @@ const Profile = () => {
     try {
       setIsLoading(true);
 
-      const response = await fetch(`${API_URL}/books/user`, {
+      const response = await fetch(`${API_URL}/book/user`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -53,7 +53,7 @@ const Profile = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   const renderBookItem = ({ item }) => {};
 
   const handleRefresh = async () => {};
