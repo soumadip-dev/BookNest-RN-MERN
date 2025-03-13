@@ -14,7 +14,7 @@ const router = Router();
 router.post('/', protectRoute, createBook);
 router.get('/', protectRoute, getAllBooks);
 router.delete('/:id', protectRoute, deleteBook);
-router.get('/user', getRecommendedBooks);
+router.get('/user', protectRoute, getRecommendedBooks);
 
 //* Export the router
 export default router;
