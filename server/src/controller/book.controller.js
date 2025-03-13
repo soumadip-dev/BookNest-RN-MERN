@@ -44,7 +44,7 @@ const getAllBooks = async (req, res) => {
     res.status(200).json({
       books,
       totalBooks,
-      currentOage: page,
+      currentPage: page,
       totalPages: Math.ceil(totalBooks / limit),
       message: 'Books fetched successfully',
       success: true,
@@ -70,7 +70,7 @@ const deleteBook = async (req, res) => {
     }
 
     // Delete the book
-    await deleteBookService(id);
+    await deleteBookService(id, req.user._id);
 
     // Send success response
     res.status(200).json({ message: 'All books deleted successfully', success: true });
@@ -87,7 +87,7 @@ const getRecommendedBooks = async (req, res) => {
     const user = req.user;
 
     // Find the recommended books
-    const books = getRecommendedBooksService(user);
+    const books = await getRecommendedBooksService(user);
 
     // Send success response
     res
