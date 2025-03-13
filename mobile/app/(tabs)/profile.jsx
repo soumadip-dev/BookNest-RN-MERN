@@ -54,7 +54,26 @@ function Profile() {
     fetchData();
   }, []);
 
-  const handleDeleteBook = async bookId => {};
+  const handleDeleteBook = async bookId => {
+    try {
+      setDeleteBookId(bookId);
+
+      const response = await fetch(`${API_URL}/book/${bookId}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Failed to delete book');
+
+      setBooks(books.filter(book => book._id !== bookId));
+      Alert.alert('Success', 'Recommendation deleted successfully');
+    } catch (error) {
+      Alert.alert('Error', error.message || 'Failed to delete recommendation');
+    } finally {
+      setDeleteBookId(null);
+    }
+  };
 
   const confirmDelete = bookId => {
     Alert.alert('Delete Recommendation', 'Are you sure you want to delete this recommendation?', [
