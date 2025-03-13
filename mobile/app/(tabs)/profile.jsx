@@ -30,6 +30,7 @@ function Profile() {
 
   const router = useRouter();
 
+  // Function to fetch user books
   const fetchData = async () => {
     try {
       setIsLoading(true);
@@ -50,10 +51,12 @@ function Profile() {
     }
   };
 
+  // Fetch user books on component mount
   useEffect(() => {
     fetchData();
   }, []);
 
+  // Function to handle book deletion
   const handleDeleteBook = async bookId => {
     try {
       setDeleteBookId(bookId);
@@ -75,6 +78,7 @@ function Profile() {
     }
   };
 
+  // Function to confirm book deletion
   const confirmDelete = bookId => {
     Alert.alert('Delete Recommendation', 'Are you sure you want to delete this recommendation?', [
       { text: 'Cancel', style: 'cancel' },
@@ -82,6 +86,7 @@ function Profile() {
     ]);
   };
 
+  // Function to render book item
   const renderBookItem = ({ item }) => (
     <View style={styles.bookItem}>
       <Image source={item.image} style={styles.bookImage} />
@@ -104,6 +109,7 @@ function Profile() {
     </View>
   );
 
+  // Function to render rating stars
   const renderRatingStars = rating => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -120,6 +126,7 @@ function Profile() {
     return stars;
   };
 
+  // Function to handle refresh
   const handleRefresh = async () => {
     setRefreshing(true);
     await sleep(500);
