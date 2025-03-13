@@ -47,7 +47,7 @@ const getPaginatedBooksService = async (page, limit) => {
 };
 
 //* Service to delete a book
-const deleteBookService = async id => {
+const deleteBookService = async (id, userId) => {
   // find the book by id
   const book = await Book.findById(id);
 
@@ -57,7 +57,7 @@ const deleteBookService = async id => {
   }
 
   // Check if the user is the owner of the book or not
-  if (book.user.toString() !== req.user._id.toString()) {
+  if (book.user.toString() !== userId.toString()) {
     throw new Error('Unauthorized');
   }
 
