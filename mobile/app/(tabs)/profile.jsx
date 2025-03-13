@@ -56,7 +56,12 @@ function Profile() {
 
   const handleDeleteBook = async bookId => {};
 
-  const confirmDelete = bookId => {};
+  const confirmDelete = bookId => {
+    Alert.alert('Delete Recommendation', 'Are you sure you want to delete this recommendation?', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Delete', style: 'destructive', onPress: () => handleDeleteBook(bookId) },
+    ]);
+  };
 
   const renderBookItem = ({ item }) => (
     <View style={styles.bookItem}>
