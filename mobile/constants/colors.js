@@ -1,13 +1,13 @@
 const COLORS = {
-  primary: '#B5651D', // Weathered leather / sepia
-  textPrimary: '#6B4423', // Dark sepia ink
-  textSecondary: '#8C6C4F', // Medium sepia
-  textDark: '#4E3524', // Very dark brown
-  placeholderText: '#9E8268', // Muted tan
-  background: '#F2EECB', // Aged parchment
-  cardBackground: '#F8F5E2', // Lighter parchment for cards
-  inputBackground: '#FCF9ED', // Very light parchment
-  border: '#D9CCA5', // Border the color of dried paper
+  primary: '#B5651D',
+  textPrimary: '#6B4423',
+  textSecondary: '#8C6C4F',
+  textDark: '#4E3524',
+  placeholderText: '#9E8268',
+  background: '#F2EECB',
+  cardBackground: '#F8F5E2',
+  inputBackground: '#FCF9ED',
+  border: '#D9CCA5',
   white: '#FFFFFF',
   black: '#000000',
 };
