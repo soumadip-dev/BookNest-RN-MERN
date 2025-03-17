@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { Text, TouchableOpacity, Alert } from 'react-native';
 import { useAuthStore } from '../store/authStore';
 import styles from '../assets/styles/profile.styles';
 import { Ionicons } from '@expo/vector-icons';
