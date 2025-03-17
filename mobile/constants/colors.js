@@ -1,17 +1,3 @@
-// const COLORS = {
-//   primary: '#43A047',        // Fresher green
-//   textPrimary: '#2f6b2f',    // Brighter earthy green
-//   textSecondary: '#7aa87a',  // Lighter soft green
-//   textDark: '#1c421c',       // Deep forest green
-//   placeholderText: '#7a7a7a',// Neutral gray
-//   background: '#f0faf2',     // Brighter, fresher background
-//   cardBackground: '#f7fcf8', // Very soft mint for cards
-//   inputBackground: '#f9fdfb',// Almost white with a hint of green
-//   border: '#d0ebd4',         // Slightly lighter border green
-//   white: '#ffffff',
-//   black: '#000000',
-// };
-
 const COLORS = {
   primary: '#B5651D', // Weathered leather / sepia
   textPrimary: '#6B4423', // Dark sepia ink
