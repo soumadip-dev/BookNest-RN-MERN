@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  BookNest (RN-MERN)
+  📚 BookNest (RN-MERN) 📖
   <br>
 </h1>
 
@@ -18,16 +18,16 @@
 
 <p align="center">🚧 Currently Building 🚧</p>
 
-## ⭐ Features (Planned)
+## ✨ Features (Planned)
 
-- **Authentication**: signup & login with JWT, error handling for bad credentials
-- **Home Feed**: newest-first posts with infinite scrolling
-- **Create Post**: title, rating, cover image & caption (all required)
-- **Profile Screen**: user info + their posts
-- **Delete Post**: confirmation alert before removal
-- **Themes**: 4 instant themes - just swap one color object
-- **Web Support**: run on localhost in the browser
-- **Logout**: clears localStorage and redirects to login screen
+- 🔐 **Authentication**: Signup & login with JWT, error handling for bad credentials
+- 🏠 **Home Feed**: Newest-first posts with infinite scrolling
+- ➕ **Create Post**: Title, rating, cover image & caption (all required)
+- 👤 **Profile Screen**: User info + their posts
+- 🗑️ **Delete Post**: Confirmation alert before removal
+- 🎨 **Themes**: 4 instant themes - just swap one color object
+- 🌐 **Web Support**: Run on localhost in the browser
+- 👋 **Logout**: Clears localStorage and redirects to login screen
 
 ## 🛠️ Tech Stack
 
