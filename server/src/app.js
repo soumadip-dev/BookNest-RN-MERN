@@ -1,12 +1,14 @@
 import express from 'express';
 import authRoutes from './routes/auth.routes.js';
 import bookRoutes from './routes/book.routes.js';
+import cors from 'cors';
 
 const app = express();
 
 //* Middlewares
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(cors()); // Enable CORS
 
 //* Home route
 app.get('/', (req, res) => {
