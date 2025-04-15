@@ -11,10 +11,10 @@ export default function Index() {
       }}
     >
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-        <Link href="/signup">Signup Page</Link>
+        <Link href="/(auth)/signup">Signup Page</Link>
       </Text>
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-        <Link href="/login">Login Page</Link>
+        <Link href="/(auth)">Login Page</Link>
       </Text>
     </View>
   );
