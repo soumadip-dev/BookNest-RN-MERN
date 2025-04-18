@@ -16,9 +16,15 @@ import { Ionicons } from '@expo/vector-icons';
 import COLORS from '../../constants/colors';
 
 const Login = () => {
+  // State variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // Function to handle login
+  const handleLogin = async () => {};
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -92,7 +98,11 @@ const Login = () => {
             </View>
           </View>
           <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Login</Text>
+            {loading ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.buttonText}>Login</Text>
+            )}
           </TouchableOpacity>
 
           {/* FOOTER */}
