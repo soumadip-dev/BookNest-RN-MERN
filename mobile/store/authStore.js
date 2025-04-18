@@ -2,11 +2,13 @@ import { create } from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '../constants/api';
 
+//* Zustand Store for authentication
 export const useAuthStore = create(set => ({
   user: null,
   token: null,
   isLoading: false,
 
+  // Function to register a new user
   register: async (username, email, password) => {
     set({ isLoading: true });
     try {
