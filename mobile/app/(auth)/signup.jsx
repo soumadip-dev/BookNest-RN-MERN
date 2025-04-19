@@ -16,21 +16,25 @@ import { useRouter } from 'expo-router';
 import { useAuthStore } from '../../store/authStore';
 
 export default function Signup() {
+  // State variables
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  // Get data from auth store
   const { user, isLoading, register, token } = useAuthStore();
 
+  // get the router object from the useRouter hook
   const router = useRouter();
 
+  // Function to handle sign up
   const handleSignUp = async () => {
     const result = await register(username, email, password);
-
     if (!result.success) Alert.alert('Error', result.error);
   };
 
+  // Render the component
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
