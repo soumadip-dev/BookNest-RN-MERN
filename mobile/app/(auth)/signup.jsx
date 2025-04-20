@@ -13,14 +13,17 @@ import { Ionicons } from '@expo/vector-icons';
 import COLORS from '../../constants/colors';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
+import { useAuthStore } from '../../store/authStore';
+
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-
+  const { user, isLoading } = useAuthStore();
   const router = useRouter();
+
+  const handleSubmit = async () => {};
 
   return (
     <KeyboardAvoidingView
@@ -110,8 +113,8 @@ const Signup = () => {
           </View>
 
           {/* SIGNUP BUTTON */}
-          <TouchableOpacity style={styles.button}>
-            {loading ? (
+          <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+            {isLoading ? (
               <ActivityIndicator color="#fff" />
             ) : (
               <Text style={styles.buttonText}>Sign Up</Text>
