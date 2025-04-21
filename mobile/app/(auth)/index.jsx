@@ -14,13 +14,16 @@ import styles from '../../assets/styles/login.styles';
 import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import COLORS from '../../constants/colors';
+import { useAuthStore } from '../../store/authStore';
 
 const Login = () => {
   // State variables
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
+
+  // Get data from auth store
+  const { user, isLoading, login, token } = useAuthStore();
 
   // Function to handle login
   const handleLogin = async () => {};
@@ -98,7 +101,7 @@ const Login = () => {
             </View>
           </View>
           <TouchableOpacity style={styles.button}>
-            {loading ? (
+            {isLoading ? (
               <ActivityIndicator color="#fff" />
             ) : (
               <Text style={styles.buttonText}>Login</Text>
