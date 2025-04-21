@@ -4,7 +4,7 @@ import { useAuthStore } from '../store/authStore';
 import { useEffect } from 'react';
 
 export default function Index() {
-  const { user, token, checkAuth } = useAuthStore();
+  const { user, token, checkAuth, logout } = useAuthStore();
 
   useEffect(() => {
     checkAuth();
@@ -19,7 +19,9 @@ export default function Index() {
       }}
     >
       {user && (
-        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'blue' }}>{user.username}</Text>
+        <Text
+          style={{ fontSize: 20, fontWeight: 'bold', color: 'blue' }}
+        >{`Hello ${user.username}`}</Text>
       )}
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
         <Link href="/(auth)/signup">Signup Page</Link>
@@ -27,6 +29,11 @@ export default function Index() {
       <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
         <Link href="/(auth)">Login Page</Link>
       </Text>
+      {user && (
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'red' }} onPress={logout}>
+          Logout
+        </Text>
+      )}
     </View>
   );
 }
