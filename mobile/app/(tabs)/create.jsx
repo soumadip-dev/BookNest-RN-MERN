@@ -1,9 +1,97 @@
-import { View, Text } from 'react-native';
+import {
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import styles from '../../assets/styles/create.styles';
+import COLORS from '../../constants/colors';
+import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
+
 const Create = () => {
+  const [title, setTitle] = useState('');
+  const [caption, setCaption] = useState('');
+
   return (
-    <View>
-      <Text>create page</Text>
-    </View>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <ScrollView contentContainerStyle={styles.container} style={styles.scrollViewStyle}>
+        <View style={styles.card}>
+          {/* HEADER */}
+          <View style={styles.header}>
+            <Text style={styles.title}>Add Book Recommendation</Text>
+            <Text style={styles.subtitle}>Share your favorite reads with others</Text>
+          </View>
+
+          <View style={styles.form}>
+            {/* BOOK TITLE */}
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Book Title</Text>
+              <View style={styles.inputContainer}>
+                <Ionicons
+                  name="book-outline"
+                  size={20}
+                  color={COLORS.textSecondary}
+                  style={styles.inputIcon}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Enter book title"
+                  placeholderTextColor={COLORS.placeholderText}
+                  value={title}
+                  onChangeText={setTitle}
+                />
+              </View>
+            </View>
+
+            {/* RATING */}
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Your Rating</Text>
+              {/* YOUR RATING INPUTS */}
+            </View>
+
+            {/* IMAGE */}
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Book Image</Text>
+              <TouchableOpacity style={styles.imagePicker}>
+                <View style={styles.placeholderContainer}>
+                  <Ionicons name="image-outline" size={40} color={COLORS.textSecondary} />
+                  <Text style={styles.placeholderText}>Tap to select image</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+            {/* CAPTION */}
+            <View style={styles.formGroup}>
+              <Text style={styles.label}>Caption</Text>
+              <TextInput
+                style={styles.textArea}
+                placeholder="Write your review or thoughts about this book..."
+                placeholderTextColor={COLORS.placeholderText}
+                value={caption}
+                onChangeText={setCaption}
+                multiline
+              />
+            </View>
+            <TouchableOpacity style={styles.button}>
+              <Ionicons
+                name="cloud-upload-outline"
+                size={20}
+                color={COLORS.white}
+                style={styles.buttonIcon}
+              />
+              <Text style={styles.buttonText}>Share</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 export default Create;
