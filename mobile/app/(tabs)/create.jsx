@@ -11,6 +11,7 @@ import styles from '../../assets/styles/create.styles';
 import COLORS from '../../constants/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
+import { useRouter } from 'expo-router';
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -19,6 +20,12 @@ const Create = () => {
   const [image, setImage] = useState(null); // to display the selected image
   const [imageBase64, setImageBase64] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
+  const pickImage = async () => {};
+
+  const handleSubmit = async () => {};
 
   return (
     <KeyboardAvoidingView
