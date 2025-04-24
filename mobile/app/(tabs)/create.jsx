@@ -37,6 +37,14 @@ const Create = () => {
           return;
         }
       }
+      // launch image library
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: 'images',
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 0.5, // lower quality for smaller base64
+        base64: true,
+      });
     } catch (error) {
       console.error('Error picking image:', error);
       Alert.alert('Error', 'There was a problem selecting your image');
