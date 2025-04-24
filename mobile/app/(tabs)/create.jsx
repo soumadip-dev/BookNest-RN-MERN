@@ -7,12 +7,15 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Alert,
 } from 'react-native';
 import styles from '../../assets/styles/create.styles';
 import COLORS from '../../constants/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
+
+import * as ImagePicker from 'expo-image-picker';
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -24,7 +27,22 @@ const Create = () => {
 
   const router = useRouter();
 
-  const pickImage = async () => {};
+  const pickImage = async () => {
+    try {
+      // Request permission if needed
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          Alert.alert('Permission Denied', 'We need camera roll permissions to upload an image');
+          return;
+        }
+      }
+    } catch (error) {
+      console.error('Error picking image:', error);
+      Alert.alert('Error', 'There was a problem selecting your image');
+    }
+  };
+
   const handleSubmit = async () => {};
 
   // Function to render the rating picker
