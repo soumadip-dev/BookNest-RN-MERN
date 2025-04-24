@@ -6,6 +6,7 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import styles from '../../assets/styles/create.styles';
 import COLORS from '../../constants/colors';
@@ -87,11 +88,15 @@ const Create = () => {
 
             <View style={styles.formGroup}>
               <Text style={styles.label}>Book Image</Text>
-              <TouchableOpacity style={styles.imagePicker}>
-                <View style={styles.placeholderContainer}>
-                  <Ionicons name="image-outline" size={40} color={COLORS.textSecondary} />
-                  <Text style={styles.placeholderText}>Tap to select image</Text>
-                </View>
+              <TouchableOpacity style={styles.imagePicker} onPress={pickImage}>
+                {image ? (
+                  <Image source={{ uri: image }} style={styles.previewImage} />
+                ) : (
+                  <View style={styles.placeholderContainer}>
+                    <Ionicons name="image-outline" size={40} color={COLORS.textSecondary} />
+                    <Text style={styles.placeholderText}>Tap to select image</Text>
+                  </View>
+                )}
               </TouchableOpacity>
             </View>
 
