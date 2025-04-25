@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { useRouter } from 'expo-router';
 
 import * as ImagePicker from 'expo-image-picker';
+import * as FileSystem from 'expo-file-system';
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -45,6 +46,21 @@ const Create = () => {
         quality: 0.5, // lower quality for smaller base64
         base64: true,
       });
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
+      }
+
+      // if base64 is provided, use it
+
+      if (result.assets[0].base64) {
+        setImageBase64(result.assets[0].base64);
+      } else {
+        // otherwise, convert to base64
+        const base64 = await FileSystem.readAsStringAsync(result.assets[0].uri, {
+          encoding: FileSystem.EncodingType.Base64,
+        });
+        setImageBase64(base64);
+      }
     } catch (error) {
       console.error('Error picking image:', error);
       Alert.alert('Error', 'There was a problem selecting your image');
