@@ -19,6 +19,13 @@ import COLORS from '../../constants/colors';
 // import Loader from '../../components/Loader';
 
 const Home = () => {
+  const { token } = useAuthStore();
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  
   return (
     <View style={styles.container}>
       <Text>index</Text>
