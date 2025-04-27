@@ -1,22 +1,25 @@
+import { useState } from 'react';
 import {
   View,
   Text,
-  KeyboardAvoidingView,
   Platform,
+  KeyboardAvoidingView,
   ScrollView,
   TextInput,
   TouchableOpacity,
-  Image,
   Alert,
+  Image,
+  ActivityIndicator,
 } from 'react-native';
-import styles from '../../assets/styles/create.styles';
-import COLORS from '../../constants/colors';
-import { Ionicons } from '@expo/vector-icons';
-import { useState } from 'react';
 import { useRouter } from 'expo-router';
+import styles from '../../assets/styles/create.styles';
+import { Ionicons } from '@expo/vector-icons';
+import COLORS from '../../constants/colors';
+import { useAuthStore } from '../../store/authStore';
 
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
+import { API_URL } from '../../constants/api';
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -132,7 +135,6 @@ const Create = () => {
             </View>
 
             {/* IMAGE */}
-
             <View style={styles.formGroup}>
               <Text style={styles.label}>Book Image</Text>
               <TouchableOpacity style={styles.imagePicker} onPress={pickImage}>
@@ -159,14 +161,21 @@ const Create = () => {
                 multiline
               />
             </View>
-            <TouchableOpacity style={styles.button}>
-              <Ionicons
-                name="cloud-upload-outline"
-                size={20}
-                color={COLORS.white}
-                style={styles.buttonIcon}
-              />
-              <Text style={styles.buttonText}>Share</Text>
+
+            <TouchableOpacity style={styles.button} onPress={handleSubmit} disabled={loading}>
+              {loading ? (
+                <ActivityIndicator color={COLORS.white} />
+              ) : (
+                <>
+                  <Ionicons
+                    name="cloud-upload-outline"
+                    size={20}
+                    color={COLORS.white}
+                    style={styles.buttonIcon}
+                  />
+                  <Text style={styles.buttonText}>Share</Text>
+                </>
+              )}
             </TouchableOpacity>
           </View>
         </View>
