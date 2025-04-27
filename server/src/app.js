@@ -26,7 +26,5 @@ app.use('/api/v1/auth', authRoutes);
 //* Book route
 app.use('/api/v1/book', bookRoutes);
 
-//* Book Route
-app.use('/api/v1/book', bookRoutes);
 
 export default app;
