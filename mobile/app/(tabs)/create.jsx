@@ -75,6 +75,7 @@ const Create = () => {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = async () => {};
 
   // Function to render the rating picker
