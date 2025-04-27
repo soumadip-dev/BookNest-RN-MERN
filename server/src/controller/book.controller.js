@@ -7,12 +7,13 @@ import {
 
 //* Controller to create a new Book
 const createBook = async (req, res) => {
+  console.log('called');
   try {
     // Get all fields from request body
     const { title, caption, rating, image } = req.body;
 
     // Create a new book
-    const newBook = await createBookService(title, caption, rating, image);
+    const newBook = await createBookService(title, caption, rating, image, req.user._id);
 
     // Send success response
     res.status(201).json({
