@@ -28,16 +28,19 @@ const Create = () => {
 
   const router = useRouter();
 
+  // Function to pick an image
   const pickImage = async () => {
     try {
-      // Request permission if needed
+      // request permission if needed
       if (Platform.OS !== 'web') {
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
         if (status !== 'granted') {
           Alert.alert('Permission Denied', 'We need camera roll permissions to upload an image');
           return;
         }
       }
+
       // launch image library
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: 'images',
@@ -46,20 +49,22 @@ const Create = () => {
         quality: 0.5, // lower quality for smaller base64
         base64: true,
       });
+
       if (!result.canceled) {
         setImage(result.assets[0].uri);
-      }
 
-      // if base64 is provided, use it
+        // if base64 is provided, use it
 
-      if (result.assets[0].base64) {
-        setImageBase64(result.assets[0].base64);
-      } else {
-        // otherwise, convert to base64
-        const base64 = await FileSystem.readAsStringAsync(result.assets[0].uri, {
-          encoding: FileSystem.EncodingType.Base64,
-        });
-        setImageBase64(base64);
+        if (result.assets[0].base64) {
+          setImageBase64(result.assets[0].base64);
+        } else {
+          // otherwise, convert to base64
+          const base64 = await FileSystem.readAsStringAsync(result.assets[0].uri, {
+            encoding: FileSystem.EncodingType.Base64,
+          });
+
+          setImageBase64(base64);
+        }
       }
     } catch (error) {
       console.error('Error picking image:', error);
