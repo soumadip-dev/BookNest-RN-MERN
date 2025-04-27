@@ -2,7 +2,7 @@ import cloudinary from '../config/cloudinary.config.js';
 import Book from '../models/Book.model.js';
 
 //* Service to create a new book
-const createBookService = async (title, caption, rating, image) => {
+const createBookService = async (title, caption, rating, image, userId) => {
   // Check if all fields are present or not
   if (!title || !caption || !rating || !image) {
     throw new Error('All fields are required');
@@ -18,7 +18,7 @@ const createBookService = async (title, caption, rating, image) => {
     caption,
     rating,
     image: imageUrl,
-    user: req.user._id,
+    user: userId,
   });
 
   // Save the book to the database
