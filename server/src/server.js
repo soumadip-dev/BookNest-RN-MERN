@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
   res.send('Hello from the BookNest server');
 });
 
+//* HealthCheck route
+app.post('/api/v1/health', (req, res) => {
+  res.status(200).json({ success: true });
+});
+
 app.listen(PORT, () => {
   console.info(`✔️ Server is up and running on port: ${PORT}`);
 });
