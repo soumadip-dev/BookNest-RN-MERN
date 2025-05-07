@@ -1,4 +1,5 @@
 import { ENV } from '../config/env.config.js';
+import jwt from 'jsonwebtoken';
 
 //* Email Regex Validation function
 export const isValidEmail = email => {
