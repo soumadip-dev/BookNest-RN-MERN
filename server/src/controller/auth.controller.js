@@ -1,6 +1,4 @@
-import User from '../models/User.model.js';
-import { registerService } from '../services/auth.service.js';
-import { generateToken, isValidEmail } from '../utils/helper.utils.js';
+import { loginService, registerService } from '../services/auth.service.js';
 
 //* Controller to register a new user
 const registerUser = async (req, res) => {
@@ -39,42 +37,8 @@ const loginUser = async (req, res) => {
     // Get fields from request body
     const { email, password } = req.body;
 
-    // Check if all fields are provided or not
-    if (!email || !password) {
-      return res.status(400).json({
-        message: 'All fields are required',
-        success: false,
-      });
-    }
-
-    // Check if email is valid or not
-    if (!isValidEmail(email)) {
-      return res.status(400).json({
-        message: 'Email is not valid',
-        success: false,
-      });
-    }
-
-    // Find the user based on email
-    const user = await User.findOne({ email });
-
-    // Check if user exists or not
-    if (!user) {
-      return res.status(400).json({
-        message: 'Invalid credentials',
-        success: false,
-      });
-    }
-
-    // Check if password is correct or not
-    const isPasswordCorrect = await user.comparePassword(password);
-    if (!isPasswordCorrect)
-      return res.status(400).json({
-        message: 'Invalid credentials',
-        success: false,
-      });
-
-    const token = generateToken(user._id);
+    // Login User
+    const { user, token } = await loginService(email, password);
 
     // Send success response
     res.status(200).json({

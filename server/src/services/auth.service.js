@@ -53,3 +53,32 @@ export const registerService = async (username, email, password) => {
 
   return { newUser, token };
 };
+
+//* Service to login a user
+export const loginService = async (email, password) => {
+  // Check if all fields are provided or not
+  if (!email || !password) {
+    throw new Error('All fields are required');
+  }
+
+  // Check if email is valid or not
+  if (!isValidEmail(email)) {
+    throw new Error('Email is not valid');
+  }
+
+  // Find the user based on email
+  const user = await User.findOne({ email });
+
+  // Check if user exists or not
+  if (!user) {
+    throw new Error('Invalid credentials');
+  }
+
+  // Check if password is correct or not
+  const isPasswordCorrect = await user.comparePassword(password);
+  if (!isPasswordCorrect) throw new Error('Invalid credentials');
+
+  const token = generateToken(user._id);
+
+  return { user, token };
+};
