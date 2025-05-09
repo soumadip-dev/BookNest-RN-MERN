@@ -2,6 +2,7 @@ import {
   createBookService,
   getPaginatedBooksService,
   deleteBookService,
+  getRecommendedBooksService,
 } from '../services/book.service.js';
 
 //* Controller to create a new Book
@@ -85,7 +86,7 @@ const getRecommendedBooks = async (req, res) => {
     const user = req.user;
 
     // Find the recommended books
-    const books = await Book.find({ user: user._id });
+    const books = getRecommendedBooksService(user);
 
     // Send success response
     res
@@ -97,4 +98,4 @@ const getRecommendedBooks = async (req, res) => {
   }
 };
 
-export { createBook, getAllBooks, deleteBook };
+export { createBook, getAllBooks, deleteBook, getRecommendedBooks };

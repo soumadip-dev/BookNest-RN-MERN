@@ -74,4 +74,18 @@ const deleteBookService = async id => {
   await book.deleteOne();
 };
 
-export { createBookService, getPaginatedBooksService, deleteBookService };
+//* Service to get recommended books by the loggedin user
+const getRecommendedBooksService = async user => {
+  // Find the recommended books
+  const books = await Book.find({ user: user._id });
+
+  // Return the books
+  return books;
+};
+
+export {
+  createBookService,
+  getPaginatedBooksService,
+  deleteBookService,
+  getRecommendedBooksService,
+};
