@@ -2,13 +2,13 @@ import { ENV } from '../config/env.config.js';
 import jwt from 'jsonwebtoken';
 
 //* Email Regex Validation function
-export const isValidEmail = email => {
+const isValidEmail = email => {
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
 };
 
 //* Password Regex Validation function
-export const isStrongPassword = password => {
+const isStrongPassword = password => {
   // Explanation:
   // (?=.*[a-z])        -> must contain at least one lowercase letter
   // (?=.*[A-Z])        -> must contain at least one uppercase letter
@@ -20,6 +20,8 @@ export const isStrongPassword = password => {
 };
 
 //* Generate JWT token function
-export const generateToken = userId => {
+const generateToken = userId => {
   return jwt.sign({ userId }, ENV.JWT_SECRET, { expiresIn: '15d' });
 };
+
+export { isValidEmail, isStrongPassword, generateToken };
