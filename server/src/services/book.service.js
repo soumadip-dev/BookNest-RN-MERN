@@ -38,6 +38,7 @@ const getPaginatedBooksService = async (page, limit) => {
   // Calculate total books
   const totalBooks = await Book.countDocuments();
 
+  // Return the books
   return { books, totalBooks };
 };
 
