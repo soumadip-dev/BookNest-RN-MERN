@@ -35,7 +35,7 @@ const registerService = async (username, email, password) => {
   }
 
   // Set a random profile image for the user from https://avatars.dicebear.com
-  const profileImage = `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`;
+  const profileImage = `https://api.dicebear.com/9.x/open-peeps/svg?seed=${username}`;
 
   // Create a new user
   const newUser = await User.create({
