@@ -1,6 +1,7 @@
 import { isStrongPassword, isValidEmail, generateToken } from '../utils/helper.utils.js';
 import User from '../models/User.model.js';
 
+//* Service to register a new user
 export const registerService = async (username, email, password) => {
   // Check if all fields are provided or not
   if (!username || !email || !password) {
