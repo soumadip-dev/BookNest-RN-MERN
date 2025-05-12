@@ -2,7 +2,7 @@ import { isStrongPassword, isValidEmail, generateToken } from '../utils/helper.u
 import User from '../models/User.model.js';
 
 //* Service to register a new user
-export const registerService = async (username, email, password) => {
+const registerService = async (username, email, password) => {
   // Check if all fields are provided or not
   if (!username || !email || !password) {
     throw new Error('All fields are required');
@@ -55,7 +55,7 @@ export const registerService = async (username, email, password) => {
 };
 
 //* Service to login a user
-export const loginService = async (email, password) => {
+const loginService = async (email, password) => {
   // Check if all fields are provided or not
   if (!email || !password) {
     throw new Error('All fields are required');
@@ -82,3 +82,5 @@ export const loginService = async (email, password) => {
 
   return { user, token };
 };
+
+export { registerService, loginService };
