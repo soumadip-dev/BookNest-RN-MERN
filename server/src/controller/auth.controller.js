@@ -33,6 +33,7 @@ const registerUser = async (req, res) => {
   }
 };
 
+//* Controller to login a user
 const loginUser = async (req, res) => {
   try {
     // Get fields from request body
