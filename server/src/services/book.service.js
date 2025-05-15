@@ -33,7 +33,11 @@ const getPaginatedBooksService = async (page, limit) => {
   const skip = (page - 1) * limit;
 
   // Get all books
-  const books = await Book.find().skip(skip).limit(limit).populate('user', 'username profileImage');
+  const books = await Book.find()
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(limit)
+    .populate('user', 'username profileImage');
 
   // Calculate total books
   const totalBooks = await Book.countDocuments();
