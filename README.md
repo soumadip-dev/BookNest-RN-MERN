@@ -1,18 +1,22 @@
-<h1 align="center">BookNest (RN-MERN)</h1>
+<h1 align="center">
+  <br>
+  BookNest (RN-MERN)
+  <br>
+</h1>
 
 <div align="center">
-  <a href="https://github.com/your-username">
-    <img src="https://skillicons.dev/icons?i=react,typescript,nodejs,express,mongodb,tailwind,github" alt="Tech Stack" width="300" style="padding: 15px 0;">
-  </a>
+  <img src="https://skillicons.dev/icons?i=react,typescript,nodejs,express,mongodb,tailwind,github" alt="Tech Stack" width="300">
 </div>
 
-<h3 align="center">
+<p align="center">
   A beautiful book tracking mobile app built with React Native (Expo). Organize your reading list, track progress, and discover new books.
-</h3>
+</p>
 
-<p align="center"><strong>🚧 Currently Building 🚧</strong></p>
+<div align="center">
+  <img src="https://github.com/burakorkmez/bookworm-expo/blob/master/mobile/assets/images/screenshot-for-readme.png" alt="BookNest screenshot" width="900">
+</div>
 
----
+<p align="center">🚧 Currently Building 🚧</p>
 
 ## ⭐ Features (Planned)
 
@@ -25,13 +29,9 @@
 - **Web Support**: run on localhost in the browser
 - **Logout**: clears localStorage and redirects to login screen
 
----
-
 ## 🛠️ Tech Stack
 
 - **Frontend**: React Native, Expo, TypeScript, Tailwind CSS
 - **Backend**: Node.js with Express – RESTful API
 - **Database**: MongoDB with Mongoose
 - **Cloud Deployment**: Backend hosted online, accessible by mobile
-
----
