@@ -1,4 +1,3 @@
-import Book from '../models/Book.model.js';
 import {
   createBookService,
   getPaginatedBooksService,
