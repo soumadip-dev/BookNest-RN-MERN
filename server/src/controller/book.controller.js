@@ -1,5 +1,5 @@
 import Book from '../models/Book.model.js';
-import { createBookService } from '../services/book.service.js';
+import { createBookService, getPaginatedBooksService } from '../services/book.service.js';
 
 //* Controller to create a new Book
 const createBook = async (req, res) => {
@@ -32,17 +32,8 @@ const getAllBooks = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 5;
 
-    // Calculate the skip value
-    const skip = (page - 1) * limit;
-
-    // Get all books
-    const books = await Book.find()
-      .skip(skip)
-      .limit(limit)
-      .populate('user', 'username profileImage');
-
-    // Calculate total books
-    const totalBooks = await Book.countDocuments();
+    // Get paginated books
+    const { books, totalBooks } = await getPaginatedBooksService(page, limit);
 
     // Send success response with pagination data
     res.status(200).json({

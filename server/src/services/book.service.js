@@ -27,4 +27,18 @@ const createBookService = async (title, caption, rating, image) => {
   return newBook;
 };
 
-export { createBookService };
+//* Service to get paginated books
+const getPaginatedBooksService = async (page, limit) => {
+  // Calculate the skip value
+  const skip = (page - 1) * limit;
+
+  // Get all books
+  const books = await Book.find().skip(skip).limit(limit).populate('user', 'username profileImage');
+
+  // Calculate total books
+  const totalBooks = await Book.countDocuments();
+
+  return { books, totalBooks };
+};
+
+export { createBookService, getPaginatedBooksService };
