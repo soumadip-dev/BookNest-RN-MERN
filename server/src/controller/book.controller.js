@@ -78,4 +78,23 @@ const deleteBook = async (req, res) => {
   }
 };
 
+//* Controller to get recommended books by the loggedin user
+const getRecommendedBooks = async (req, res) => {
+  try {
+    // Get the loggedin user from request
+    const user = req.user;
+
+    // Find the recommended books
+    const books = await Book.find({ user: user._id });
+
+    // Send success response
+    res
+      .status(200)
+      .json({ books, message: 'Recommended books fetched successfully', success: true });
+  } catch (error) {
+    console.log('Error in get recommended books route', error);
+    res.status(400).json({ message: error.message || 'Something went wrong', success: false });
+  }
+};
+
 export { createBook, getAllBooks, deleteBook };
