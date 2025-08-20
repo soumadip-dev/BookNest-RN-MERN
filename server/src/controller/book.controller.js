@@ -1,5 +1,9 @@
 import Book from '../models/Book.model.js';
-import { createBookService, getPaginatedBooksService } from '../services/book.service.js';
+import {
+  createBookService,
+  getPaginatedBooksService,
+  deleteBookService,
+} from '../services/book.service.js';
 
 //* Controller to create a new Book
 const createBook = async (req, res) => {
@@ -64,30 +68,8 @@ const deleteBook = async (req, res) => {
       throw new Error('Id is required');
     }
 
-    // find the book by id
-    const book = await Book.findById(id);
-
-    // Check if book is found or not
-    if (!book) {
-      throw new Error('Book not found');
-    }
-
-    // Check if the user is the owner of the book or not
-    if (book.user.toString() !== req.user._id.toString()) {
-      throw new Error('Unauthorized');
-    }
-
-    // Delete the image from cloudinary
-    if (book.image && book.image.includes('cloudinary')) {
-      try {
-        const publicId = book.image.split('/').pop().split('.')[0];
-        await cloudinary.uploader.destroy(publicId);
-      } catch (delError) {
-        console.error('Error in deleting image from cloudinary', delError);
-      }
-    }
     // Delete the book
-    await book.deleteOne();
+    await deleteBookService(id);
 
     // Send success response
     res.status(200).json({ message: 'All books deleted successfully', success: true });
