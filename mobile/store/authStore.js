@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '../constants/api';
 
 export const useAuthStore = create(set => ({
@@ -25,8 +25,8 @@ export const useAuthStore = create(set => ({
       }
 
       if (data.success) {
-        //  await AsyncStorage.setItem('user', JSON.stringify(data.user));
-        //  await AsyncStorage.setItem('token', data.token);
+        await AsyncStorage.setItem('user', JSON.stringify(data.user));
+        await AsyncStorage.setItem('token', data.token);
 
         set({
           user: data.user,
