@@ -57,4 +57,11 @@ export const useAuthStore = create(set => ({
       console.log('Auth error', error);
     }
   },
+
+  // Function to logout a user
+  logout: async () => {
+    await AsyncStorage.removeItem('user');
+    await AsyncStorage.removeItem('token');
+    set({ user: null, token: null });
+  },
 }));
