@@ -44,4 +44,17 @@ export const useAuthStore = create(set => ({
       return { success: false, error: error.message || 'Something went wrong, please try again' };
     }
   },
+
+  // Function to check if user is authenticated
+  checkAuth: async () => {
+    try {
+      const token = await AsyncStorage.getItem('token');
+      const userJson = await AsyncStorage.getItem('user');
+      const user = userJson ? JSON.parse(userJson) : null;
+
+      set({ user, token });
+    } catch (error) {
+      console.log('Auth error', error);
+    }
+  },
 }));
