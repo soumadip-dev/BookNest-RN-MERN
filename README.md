@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=react,nodejs,express,mongodb,tailwind,github" alt="Tech Stack" width="260">
+  <img src="https://skillicons.dev/icons?i=react,nodejs,express,mongodb,github" alt="Tech Stack" width="260">
 </div>
 
 <p align="center">
@@ -27,16 +27,14 @@
 - ➕ **Create Post**: Title, rating, cover image & caption (all required)
 - 👤 **Profile Screen**: User info + their posts
 - 🗑️ **Delete Post**: Confirmation alert before removal
-- 🎨 **Themes**: 4 instant themes - just swap one color object
-- 🌐 **Web Support**: Run on localhost in the browser
 - 👋 **Logout**: Clears localStorage and redirects to login screen
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React Native, Expo, TypeScript, Tailwind CSS
+- **Frontend**: React Native, Expo
 - **Backend**: Node.js with Express – RESTful API
 - **Database**: MongoDB with Mongoose
-- **Cloud Deployment**: Backend hosted online, accessible by mobile
+  
 
 ## ⚙️ Installation & Setup
 
