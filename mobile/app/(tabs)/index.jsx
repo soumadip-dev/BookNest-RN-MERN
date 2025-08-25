@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import styles from '../../assets/styles/home.styles';
 import { API_URL } from '../../constants/api';
 import { Ionicons } from '@expo/vector-icons';
-// import { formatPublishDate } from "../../lib/utils";
+import { formatPublishDate } from '../../lib/utils';
 import COLORS from '../../constants/colors';
 // import Loader from "../../components/Loader";
 
@@ -86,7 +86,7 @@ function Home() {
         <Text style={styles.bookTitle}>{item.title}</Text>
         <View style={styles.ratingContainer}>{renderRatingStars(item.rating)}</View>
         <Text style={styles.caption}>{item.caption}</Text>
-        {/* <Text style={styles.date}>Shared on {formatPublishDate(item.createdAt)}</Text> */}
+        <Text style={styles.date}>Shared on {formatPublishDate(item.createdAt)}</Text>
       </View>
     </View>
   );
