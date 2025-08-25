@@ -20,7 +20,7 @@
 
 </div>
 
-## ✨ Features (Planned)
+## ✨ Features
 
 - 🔐 **Authentication**: Signup & login with JWT, error handling for bad credentials
 - 🏠 **Home Feed**: Newest-first posts with infinite scrolling
