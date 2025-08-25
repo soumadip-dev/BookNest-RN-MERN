@@ -5,8 +5,12 @@ import User from '../models/User.model.js';
 //* Middleware for user authentication
 const protectRoute = async (req, res, next) => {
   try {
-    // Get the token
-    const token = req.header('Authorization').replace('Bearer ', '');
+    const authHeader = req.header('Authorization');
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ message: 'Unauthorized. Login again', success: false });
+    }
+    const token = authHeader.replace('Bearer ', '');
 
     // If no token is present, respond with 401 Unauthorized
     if (!token) {
