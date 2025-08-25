@@ -28,7 +28,10 @@ function Home() {
       else if (pageNum === 1) setLoading(true);
 
       const response = await fetch(`${API_URL}/book?page=${pageNum}&limit=2`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
       });
 
       const data = await response.json();
